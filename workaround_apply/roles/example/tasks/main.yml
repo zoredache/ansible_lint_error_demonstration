@@ -1,0 +1,5 @@
+- include_tasks: debug.yml
+  args:
+    apply:
+      tags:
+      - debug
