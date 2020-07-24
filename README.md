@@ -1,3 +1,7 @@
+Demonstrate ansible-lint problems when using apply with include_tasks
+
+For bug: https://github.com/ansible/ansible-lint/issues/507
+
 Install dev version of ansible lint and verify version
 
     root@af9d88adc869:/project# pip3 install git+https://github.com/ansible/ansible-lint.git
