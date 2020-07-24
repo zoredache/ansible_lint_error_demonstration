@@ -1,0 +1,5 @@
+- hosts: localhost
+  gather_facts: no
+  tasks:
+  - name: simple include task with apply
+    include_tasks: debug.yml

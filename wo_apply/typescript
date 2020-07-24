@@ -1,0 +1,57 @@
+Script started on 2020-07-24 19:54:12+00:00 [TERM="xterm" TTY="/dev/pts/0" COLUMNS="126" LINES="33"]
+# ansible-playbook play	    playbook_inc_role.yml
+[1;35m[WARNING]: No inventory was parsed, only implicit localhost is available[0m
+[1;35m[WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'[0m
+
+PLAY [localhost] *************************************************************************************************************
+
+TASK [playbook to include role] **********************************************************************************************
+
+TASK [example : include_tasks] ***********************************************************************************************
+[0;36mincluded: /project/wo_apply/roles/example/tasks/debug.yml for localhost[0m
+
+TASK [example : debug] *******************************************************************************************************
+[0;32mok: [localhost] => {[0m
+[0;32m    "msg": "Hello world!"[0m
+[0;32m}[0m
+
+PLAY RECAP *******************************************************************************************************************
+[0;32mlocalhost[0m                  : [0;32mok=2   [0m changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+# ansible-playbook playbook_inc_tasks.yml
+[1;35m[WARNING]: No inventory was parsed, only implicit localhost is available[0m
+[1;35m[WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'[0m
+
+PLAY [localhost] *************************************************************************************************************
+
+TASK [simple include task with apply] ****************************************************************************************
+[0;36mincluded: /project/wo_apply/debug.yml for localhost[0m
+
+TASK [debug] *****************************************************************************************************************
+[0;32mok: [localhost] => {[0m
+[0;32m    "msg": "Hello world!"[0m
+[0;32m}[0m
+
+PLAY RECAP *******************************************************************************************************************
+[0;32mlocalhost[0m                  : [0;32mok=2   [0m changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+# ansible-lint -vvv playbook_inc_tasks.yml
+DEBUG    Logging initialized to level 10
+DEBUG    Options: Namespace(colored=True, config_file=None, display_relative_path=True, exclude_paths=[], format='plain', listrules=False, listtags=False, parseable=False, parseable_severity=False, playbook=['playbook_inc_tasks.yml'], quiet=False, rulesdir=[], skip_list=[], tags=[], use_default_rules=False, verbosity=3)
+DEBUG    Loading rules from /usr/local/lib/python3.7/dist-packages/ansiblelint/rules
+DEBUG    Examining playbook_inc_tasks.yml of type playbook
+DEBUG    Examining debug.yml of type tasks
+# ansible-pll   lint i playbook_include_role.yml
+WARNING  Couldn't open playbook_include_role.yml - No such file or directory
+# ls
+debug.yml  playbook_inc_role.yml  playbook_inc_tasks.yml  roles  typescript
+# ansible-playbook -vvv             lint -vvv playbook_inc_role.yml
+DEBUG    Logging initialized to level 10
+DEBUG    Options: Namespace(colored=True, config_file=None, display_relative_path=True, exclude_paths=[], format='plain', listrules=False, listtags=False, parseable=False, parseable_severity=False, playbook=['playbook_inc_role.yml'], quiet=False, rulesdir=[], skip_list=[], tags=[], use_default_rules=False, verbosity=3)
+DEBUG    Loading rules from /usr/local/lib/python3.7/dist-packages/ansiblelint/rules
+DEBUG    Examining playbook_inc_role.yml of type playbook
+DEBUG    Examining roles/example/tasks/main.yml of type tasks
+DEBUG    Examining roles/example/tasks/debug.yml of type tasks
+# 
+
+Script done on 2020-07-24 19:55:27+00:00 [COMMAND_EXIT_CODE="0"]
